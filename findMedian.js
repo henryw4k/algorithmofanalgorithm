@@ -8,32 +8,41 @@
 // any time we want it. We will be asked to find the median multiple times.
 //
 // For instance:
-// var mStream = new MedianStream();
-// mStream.insert(1);
-// mStream.insert(3);
-// mStream.insert(2);
-// mStream.getMedian(); // => 2
-// mStream.insert(5);
-// mStream.insert(4);
-// mStream.getMedian(); // => 3
+
 //
 /////////////////////////////////////////////////////////////
 
-
 var MedianStream = function () {
-  // TODO: Implement!
+	this.array = [];
 };
 
 MedianStream.prototype = {
-  insert: function () {/**/},
-  getMedian: function () {/**/},
-  size: function () {/**/}
+  insert: function (num) {
+  	this.array.push(num);
+  },
+  getMedian: function () {
+  	var sortedArray = this.array.sort(function(a,b) {return a - b});
+  	return sortedArray[Math.floor(sortedArray.length / 2)];
+  },
+  size: function () {
+  	return this.length;
+  }
 };
 
 
 /////////////////////////////////////////////////////////////
 // TESTS
 /////////////////////////////////////////////////////////////
+var mStream = new MedianStream();
+mStream.insert(1);
+mStream.insert(3);
+mStream.insert(2);
+mStream.getMedian(); // => 2
+mStream.insert(5);
+mStream.insert(4);
+console.log(mStream.getMedian()); // => 3
+
+
 
 var mStream = new MedianStream();
 
