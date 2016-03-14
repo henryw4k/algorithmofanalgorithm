@@ -14,6 +14,28 @@
 
 var largestContiguousSum = function (array) {
   // TODO: Implement
+  var biggest = [];//total value before negative. Will return largest. 
+  var currentIncrement = null;
+
+  array.forEach(function(value, index){
+  	if(value < 0 && currentIncrement) {
+  		biggest.push(currentIncrement);
+  	} 
+	
+	if(!currentIncrement){ 
+		currentIncrement = value; 
+	} else {
+		currentIncrement += value;
+	}
+  
+  });
+  
+	function getMaxOfArray(numArray) {
+	  return Math.max.apply(null, numArray);
+	}
+
+
+  return getMaxOfArray(biggest);
 };
 
 
